@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1c3a2a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Pizzeria XXXXXXXXXX — San Isidro, Tenerife</title>
+<meta name="description" content="Las mejores pizzas de XXXXXXXXXX. Menú online, pedidos por WhatsApp y reparto a domicilio. Pizzeria XXXXXXXXXX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f9f5ef;
+  --white:#ffffff;
+  --surface:#f2ebe0;
+  --green:#1c3a2a;
+  --green2:#254d39;
+  --red:#c0392b;
+  --red2:#a93226;
+  --gold:#b8882a;
+  --text:#1a1410;
+  --muted:#7a6a58;
+  --light:#a89880;
+  --border:rgba(28,20,16,0.1);
+  --border2:rgba(28,20,16,0.06);
+  --radius:14px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:400;min-height:100vh;overflow-x:hidden}
+
+/* ANN BAR */
+.ann-bar{background:var(--green);color:rgba(255,255,255,0.85);text-align:center;font-size:13px;padding:10px 20px;letter-spacing:0.4px}
+.ann-bar span{color:#e8c97a;font-weight:600}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 24px}
+.logo{display:flex;flex-direction:column;line-height:1;cursor:default}
+.logo-top{font-size:10px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;font-weight:500;margin-bottom:3px}
+.logo-main{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--green);letter-spacing:-0.3px}
+.logo-main em{color:var(--red);font-style:italic}
+.header-right{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.3px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-sep{width:1px;height:18px;background:var(--border)}
+.wa-btn{background:var(--red);border:none;border-radius:50px;padding:11px 22px;color:#fff;font-family:'Jost',sans-serif;font-weight:500;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;letter-spacing:0.3px;transition:background .2s;text-decoration:none}
+.wa-btn:hover{background:var(--red2)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:520px;overflow:hidden}
+.hero-left{padding:60px 52px;display:flex;flex-direction:column;justify-content:center;background:var(--white)}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);margin-bottom:20px}
+.hero-tag::before,.hero-tag::after{content:'';flex:1;height:1px;background:currentColor;opacity:0.4;min-width:24px}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,5vw,72px);font-weight:700;line-height:1.0;color:var(--green);margin-bottom:12px}
+.hero h1 em{font-style:italic;color:var(--red)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--muted);margin-bottom:30px;line-height:1.5}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{background:var(--red);color:#fff;border:none;padding:14px 32px;border-radius:50px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:0.5px;transition:background .2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--red2)}
+.btn-ghost{background:transparent;color:var(--green);border:1.5px solid var(--green);padding:13px 28px;border-radius:50px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;cursor:pointer;letter-spacing:0.5px;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{background:var(--green);color:#fff}
+.rating-block{display:flex;align-items:center;gap:14px;padding:12px 18px;border-left:3px solid var(--gold);margin-bottom:4px}
+.rating-score-wrap{display:flex;flex-direction:column;gap:1px}
+.rating-stars{color:#f5a623;font-size:14px;letter-spacing:1px;line-height:1}
+.rating-score{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:700;color:var(--green);line-height:1}
+.rating-score span{font-size:15px;color:var(--muted);font-weight:400}
+.rating-count{font-size:12px;color:var(--muted);line-height:1.4}
+.rating-badges{display:flex;gap:16px;flex-wrap:wrap}
+.hero-badge{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.hero-badge strong{color:var(--text);font-weight:600}
+.badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.hero-right{position:relative;overflow:hidden;min-height:340px}
+.hero-right img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease}
+.hero-right:hover img{transform:scale(1.04)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(28,58,42,0.15) 0%,transparent 60%)}
+
+/* INFO RIBBON */
+.info-ribbon{background:var(--green);color:rgba(255,255,255,0.8);padding:14px 24px}
+.info-ribbon-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;align-items:center}
+.ri{display:flex;align-items:center;gap:8px;font-size:13px}
+.ri svg{opacity:0.55;flex-shrink:0}
+.ri strong{color:#fff;font-weight:600}
+.ri a{color:#e8c97a;text-decoration:none;font-weight:600;transition:opacity .2s}
+.ri a:hover{opacity:0.8}
+.ri-sep{width:1px;height:16px;background:rgba(255,255,255,0.15)}
+
+/* MENU */
+.menu-section{max-width:1200px;margin:0 auto;padding:60px 24px 90px}
+.section-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,50px);font-weight:700;color:var(--green);margin-bottom:32px;line-height:1.1}
+.section-title em{font-style:italic;color:var(--red)}
+
+/* TABS */
+.cat-bar{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:38px;background:var(--surface);padding:4px;border-radius:50px;width:fit-content}
+.cat-btn{background:transparent;border:none;color:var(--muted);padding:9px 20px;border-radius:50px;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap;letter-spacing:0.2px}
+.cat-btn.active{background:var(--white);color:var(--green);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+.cat-btn:hover:not(.active){color:var(--text)}
+
+/* GRID */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.menu-card{background:var(--white);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;transition:transform .25s,box-shadow .25s}
+.menu-card:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(28,58,42,0.12)}
+.card-img-wrap{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface)}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+.menu-card:hover .card-img-wrap img{transform:scale(1.06)}
+.card-badge{position:absolute;top:12px;left:12px;font-size:10px;font-weight:600;padding:5px 12px;border-radius:50px;letter-spacing:0.8px;text-transform:uppercase}
+.badge-popular{background:var(--green);color:#fff}
+.badge-nueva{background:var(--gold);color:#fff}
+.badge-veg{background:#2e7d32;color:#fff}
+.badge-picante{background:var(--red);color:#fff}
+.card-body{padding:18px}
+.card-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--green);margin-bottom:5px;line-height:1.2}
+.card-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:14px}
+.card-footer{display:flex;align-items:center;justify-content:space-between}
+.card-price{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--text)}
+.card-price small{font-size:11px;color:var(--light);font-weight:400;font-family:'Jost',sans-serif;display:block;line-height:1}
+.wa-order-btn{background:var(--red);border:none;color:#fff;border-radius:50px;padding:9px 18px;font-family:'Jost',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-block;letter-spacing:0.3px}
+.wa-order-btn:hover{background:var(--red2)}
+
+/* BEBIDAS */
+.bebidas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.bebida-card{background:var(--white);border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;align-items:center;padding:20px 16px;text-align:center;gap:10px}
+.bebida-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(28,58,42,0.09)}
+.bebida-img{width:70px;height:110px;object-fit:contain}
+.bebida-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;color:var(--green);line-height:1.2}
+.bebida-price{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--text)}
+
+/* ABOUT */
+.about-strip{background:var(--green);color:rgba(255,255,255,0.85);padding:72px 24px}
+.about-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-text .eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#e8c97a;font-weight:600;margin-bottom:16px}
+.about-text h2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,42px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:18px}
+.about-text p{font-size:15px;line-height:1.75;color:rgba(255,255,255,0.7)}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.astat{padding:22px;background:rgba(255,255,255,0.07);border-radius:12px;border:1px solid rgba(255,255,255,0.1)}
+.astat-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:#e8c97a;line-height:1}
+.astat-label{font-size:12px;color:rgba(255,255,255,0.55);margin-top:5px;line-height:1.4}
+
+/* CONTACTO */
+.contacto-section{max-width:1100px;margin:0 auto;padding:72px 24px}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:42px}
+.contacto-card{background:var(--white);border:1px solid var(--border2);border-radius:20px;padding:30px 26px}
+.contacto-card-icon{font-size:2rem;margin-bottom:14px;display:block}
+.contacto-card h3{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--green);margin-bottom:16px}
+.hours-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.hours-list li{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--border2)}
+.hours-list li:last-child{border-bottom:none}
+.hours-list li span:last-child{color:var(--text);font-weight:500}
+.hours-list li.closed span:last-child{color:var(--light)}
+.contact-link{display:flex;align-items:center;gap:10px;margin-top:10px;text-decoration:none;color:var(--text);font-size:14px;font-weight:500;transition:color .2s;padding:6px 0}
+.contact-link:hover{color:var(--red)}
+
+/* CTA */
+.cta-banner{background:var(--white);border:1px solid var(--border2);border-radius:24px;padding:60px 40px;text-align:center;margin:0 24px 80px;box-shadow:0 4px 30px rgba(28,20,16,0.06)}
+.cta-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--green);margin-bottom:10px;line-height:1.1}
+.cta-banner h2 em{font-style:italic;color:var(--red)}
+.cta-banner p{color:var(--muted);margin-bottom:32px;font-size:15px}
+.cta-banner-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,0.55);padding:44px 24px 0}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:5px}
+.footer-logo em{font-style:italic;color:#e8c97a}
+.footer-tagline{font-size:12px;color:rgba(255,255,255,0.35)}
+.footer-links{display:flex;flex-direction:column;gap:8px}
+.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.07);margin-top:36px;padding:18px 0;text-align:center;width:100%}
+
+/* AGENCY HEADER TAG */
+.agency-tag{font-size:11px;color:var(--muted);letter-spacing:0.3px}
+.agency-tag span{font-weight:700;color:var(--text)}
+.agency-tag span em{color:#7c3aed;font-style:normal}
+
+/* AGENCY SECTION */
+.agency-section{background:linear-gradient(135deg,#0f0f1a 0%,#1a1030 100%);padding:56px 24px;text-align:center}
+.agency-section-inner{max-width:640px;margin:0 auto}
+.agency-logo{font-size:36px;font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:6px;font-family:'Jost',sans-serif}
+.agency-logo em{color:#7c3aed;font-style:normal}
+.agency-tagline{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:28px}
+.agency-pitch{font-size:18px;color:#fff;font-weight:500;line-height:1.6;margin-bottom:10px}
+.agency-pitch em{color:#a78bfa;font-style:normal;font-weight:600}
+.agency-sub{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:32px}
+.agency-cta{display:inline-flex;align-items:center;gap:10px;background:#7c3aed;color:#fff;text-decoration:none;padding:16px 32px;border-radius:50px;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;letter-spacing:0.3px;transition:background .2s,transform .15s;box-shadow:0 8px 30px rgba(124,58,237,0.4)}
+.agency-cta:hover{background:#6d28d9;transform:translateY(-2px)}
+.agency-made{margin-top:20px;font-size:12px;color:rgba(255,255,255,0.2)}
+.agency-sep{width:1px;height:12px;background:rgba(255,255,255,0.1)}
+
+/* FLOAT WA */
+.float-wa{position:fixed;bottom:28px;right:26px;z-index:150;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.55rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.45);transition:transform .2s,box-shadow .2s}
+.float-wa:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,0.55)}
+.float-wa-label{position:absolute;right:68px;background:var(--text);color:#fff;white-space:nowrap;padding:7px 14px;border-radius:50px;font-size:12px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s}
+.float-wa:hover .float-wa-label{opacity:1}
+
+/* MODAL PEDIDO */
+.modal-overlay{position:fixed;inset:0;background:rgba(20,15,10,0.75);backdrop-filter:blur(6px);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--white);border-radius:24px 24px 0 0;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .38s cubic-bezier(0.34,1.2,0.64,1)}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+@media(min-width:640px){.modal-overlay{align-items:center}.modal-box{border-radius:20px;max-height:88vh}}
+.modal-head{position:sticky;top:0;background:var(--white);padding:16px 20px 0;display:flex;align-items:center;justify-content:space-between;z-index:1;border-bottom:1px solid var(--border2)}
+.modal-head-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--green)}
+.modal-close-btn{background:var(--surface);border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.modal-img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.modal-body{padding:20px}
+.modal-section-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin-bottom:10px;margin-top:18px;display:block}
+.ingr-list{display:flex;flex-wrap:wrap;gap:8px}
+.ingr-tag{display:flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--border);border-radius:50px;padding:7px 14px;font-size:13px;cursor:pointer;transition:all .2s;user-select:none}
+.ingr-tag.removed{background:#fff0ee;border-color:var(--red);color:var(--red);text-decoration:line-through;opacity:0.7}
+.ingr-tag input{display:none}
+.extras-list{display:flex;flex-direction:column;gap:8px}
+.extra-item{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:10px 14px;cursor:pointer;transition:all .2s}
+.extra-item.selected{background:#f0f7f3;border-color:var(--green)}
+.extra-left{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:500}
+.extra-price{font-size:13px;color:var(--gold);font-weight:600}
+.extra-check{width:18px;height:18px;border-radius:5px;border:2px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;transition:all .2s}
+.extra-item.selected .extra-check{background:var(--green);border-color:var(--green);color:#fff}
+.qty-row{display:flex;align-items:center;gap:14px;margin-top:4px}
+.qty-btn{background:var(--surface);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.qty-btn:hover{background:var(--border)}
+.qty-num{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--green);min-width:28px;text-align:center}
+.addr-input{width:100%;border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;font-family:'Jost',sans-serif;font-size:14px;color:var(--text);background:var(--surface);outline:none;transition:border-color .2s;resize:none}
+.addr-input:focus{border-color:var(--green);background:var(--white)}
+.modal-footer{position:sticky;bottom:0;background:var(--white);padding:14px 20px;border-top:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.modal-total{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--green)}
+.modal-total small{font-size:11px;color:var(--muted);font-family:'Jost',sans-serif;display:block;font-weight:400}
+.modal-wa-btn{background:var(--red);color:#fff;border:none;border-radius:50px;padding:14px 24px;font-family:'Jost',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s;flex:1;max-width:220px;letter-spacing:0.3px;text-align:center}
+.modal-wa-btn:hover{background:var(--red2)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* BASE MOBILE FIXES */
+html,body{overflow-x:hidden;-webkit-text-size-adjust:100%;touch-action:pan-y}
+img{max-width:100%;height:auto}
+*{-webkit-tap-highlight-color:transparent}
+button,a{touch-action:manipulation}
+
+/* TABLET */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{display:none}
+  .hero-left{padding:48px 28px}
+  .about-inner{grid-template-columns:1fr;gap:40px}
+  .contacto-grid{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+}
+
+/* MOBILE */
+@media(max-width:640px){
+  /* header */
+  .nav-links{display:none}
+  .agency-tag{display:none}
+  .header-inner{padding:0 16px}
+  .wa-btn{padding:10px 16px;font-size:12px}
+
+  /* ann bar */
+  .ann-bar{font-size:12px;padding:8px 16px}
+
+  /* hero */
+  .hero-left{padding:36px 20px}
+  .hero h1{font-size:clamp(38px,10vw,56px)}
+  .hero-sub{font-size:16px}
+  .hero-ctas{flex-direction:column;gap:10px}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;padding:15px 24px;font-size:15px}
+  .rating-block{padding:10px 14px}
+  .rating-score{font-size:28px}
+
+  /* ribbon */
+  .info-ribbon{padding:10px 16px;overflow-x:auto}
+  .info-ribbon-inner{gap:14px;flex-wrap:nowrap;justify-content:flex-start;padding-bottom:2px}
+  .ri-sep{display:none}
+  .ri{font-size:12px;white-space:nowrap}
+
+  /* menu */
+  .menu-section{padding:40px 16px 60px}
+  .section-title{font-size:clamp(28px,7vw,40px)}
+  .cat-bar{width:100%;overflow-x:auto;border-radius:14px;-webkit-overflow-scrolling:touch}
+  .menu-grid{grid-template-columns:1fr;gap:16px}
+  .bebidas-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .bebida-card{padding:14px 10px}
+  .bebida-img{width:54px;height:80px}
+  .card-body{padding:14px}
+  .card-name{font-size:18px}
+  .wa-order-btn{padding:8px 14px;font-size:12px}
+
+  /* about */
+  .about-strip{padding:48px 20px}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .astat-num{font-size:30px}
+
+  /* contacto */
+  .contacto-section{padding:40px 16px}
+  .contacto-grid{grid-template-columns:1fr;gap:12px}
+  .contacto-card{padding:22px 18px}
+
+  /* cta */
+  .cta-banner{margin:0 0 50px;border-radius:16px;padding:36px 20px}
+  .cta-banner-btns{flex-direction:column;gap:10px}
+  .cta-banner-btns .btn-primary,.cta-banner-btns .btn-ghost{width:100%;text-align:center}
+
+  /* footer */
+  .footer-inner{flex-direction:column;gap:20px}
+
+  /* agency */
+  .agency-section{padding:40px 20px}
+  .agency-logo{font-size:28px}
+  .agency-pitch{font-size:16px}
+  .agency-cta{width:100%;justify-content:center;padding:16px 20px}
+
+  /* modal */
+  .modal-box{max-height:95vh}
+  .modal-footer{flex-direction:column;gap:10px;align-items:stretch}
+  .modal-wa-btn{max-width:100%;padding:15px}
+  .ingr-tag{font-size:12px;padding:6px 12px}
+
+  /* float wa */
+  .float-wa{bottom:20px;right:16px;width:52px;height:52px;font-size:1.3rem}
+  .float-wa-label{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ANN BAR -->
+<div class="ann-bar">🍕 Pizzas artesanales · Reparto a domicilio · 📞 <span>XXX XX XX XX</span></div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-top">Pizzería · San Isidro, Tenerife</span>
+      <span class="logo-main">Pizzeria <em>XXXXXXXXXX</em></span>
+    </div>
+    <div class="header-right">
+      <nav class="nav-links">
+        <a href="#menu">Menú</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <div class="nav-sep"></div>
+        <a href="tel:+34922390263">XXX XX XX XX</a>
+      </nav>
+      <div class="agency-tag">Hecha por <span>Web<em>ly</em></span></div>
+      <a href="https://wa.me/34XXXXXXXXXX?text=Hola%2C%20quiero%20hacer%20un%20pedido%20🍕" class="wa-btn">
+        💬 Pedir ahora
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Artesanal desde 1997</div>
+    <h1>Las mejores<br>pizzas de<br><em>San Isidro</em></h1>
+    <p class="hero-sub">Masa casera, ingredientes frescos y el sabor de siempre</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Ver el Menú →</button>
+      <a href="https://wa.me/34XXXXXXXXXX?text=Hola%2C%20quiero%20hacer%20un%20pedido%20🍕" class="btn-ghost">Pedir por WhatsApp</a>
+    </div>
+    <div class="rating-block">
+      <div class="rating-score-wrap">
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-score">4.6<span>/5</span></div>
+      </div>
+      <div>
+        <div class="rating-count">+200 reseñas en Google</div>
+        <div class="rating-badges">
+          <div class="hero-badge"><div class="badge-dot"></div>Desde <strong>1997</strong></div>
+          <div class="hero-badge"><div class="badge-dot"></div>Reparto a <strong>domicilio</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=1200&q=85&auto=format&fit=crop" alt="Pizza artesanal Pizzeria XXXXXXXXXX" loading="eager">
+    <div class="hero-overlay"></div>
+  </div>
+</section>
+
+<!-- INFO RIBBON -->
+<div class="info-ribbon">
+  <div class="info-ribbon-inner">
+    <div class="ri">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>C. Isla de la Palma 14 · <strong>XXXXXXXXXX</strong></span>
+    </div>
+    <div class="ri-sep"></div>
+    <div class="ri">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Hoy: <strong>12:00–15:00</strong> y <strong>18:00–22:30</strong></span>
+    </div>
+    <div class="ri-sep"></div>
+    <div class="ri">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .94h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      <a href="tel:+34922390263">XXX XX XX XX</a>
+    </div>
+    <div class="ri-sep"></div>
+    <div class="ri">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      <span>Desde <strong>9€</strong> por persona</span>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="section-eyebrow reveal">La carta</div>
+  <h2 class="section-title reveal">Nuestras <em>pizzas</em></h2>
+  <div class="cat-bar reveal">
+    <button class="cat-btn active" onclick="filterCat('pizzas',this)">🍕 Pizzas</button>
+    <button class="cat-btn" onclick="filterCat('bebidas',this)">🥤 Bebidas</button>
+  </div>
+  <div id="menu-grid" class="menu-grid"></div>
+  <div id="bebidas-grid" class="bebidas-grid" style="display:none"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="nosotros">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <div class="eyebrow">Nuestra historia</div>
+      <h2>Desde 1997 haciendo<br>las mejores pizzas</h2>
+      <p>Somos un negocio familiar de XXXXXXXXXX. Empezamos con una receta propia y las ganas de hacer algo diferente. Más de 25 años después, cada pizza sigue saliendo igual: con buena masa, buenos ingredientes y el mismo cariño de siempre.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="astat"><div class="astat-num">25+</div><div class="astat-label">Años sirviendo en XXXXXXXXXX</div></div>
+      <div class="astat"><div class="astat-num">4.6★</div><div class="astat-label">Valoración en Google</div></div>
+      <div class="astat"><div class="astat-num">+200</div><div class="astat-label">Reseñas de clientes reales</div></div>
+      <div class="astat"><div class="astat-num">100%</div><div class="astat-label">Negocio familiar y artesanal</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto-section" id="contacto">
+  <div class="section-eyebrow reveal">Encuéntranos</div>
+  <h2 class="section-title reveal">Horarios y <em>contacto</em></h2>
+  <div class="contacto-grid">
+    <div class="contacto-card reveal">
+      <span class="contacto-card-icon">🕐</span>
+      <h3>Horario</h3>
+      <ul class="hours-list">
+        <li><span>Lun – Mar</span><span>12:00–15:00 · 18:00–22:30</span></li>
+        <li class="closed"><span>Mié – Jue</span><span>Cerrado</span></li>
+        <li><span>Vie – Sáb</span><span>12:00–15:00 · 18:00–22:30</span></li>
+        <li><span>Domingo</span><span>12:00–15:00 · 18:00–22:30</span></li>
+      </ul>
+    </div>
+    <div class="contacto-card reveal">
+      <span class="contacto-card-icon">📍</span>
+      <h3>Ubicación</h3>
+      <p style="color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:14px">XXXXXXXXXX<br>XXXXXXXXXX, Santa Cruz de Tenerife<br>38611</p>
+      <a href="https://maps.google.com/?q=XXXXXXXXXX" target="_blank" class="btn-ghost" style="font-size:13px;padding:10px 22px">Ver en Google Maps →</a>
+    </div>
+    <div class="contacto-card reveal">
+      <span class="contacto-card-icon">📞</span>
+      <h3>Contáctanos</h3>
+      <a href="tel:+34922390263" class="contact-link">📞 XXX XX XX XX</a>
+      <a href="https://wa.me/34XXXXXXXXXX" class="contact-link">💬 WhatsApp</a>
+      <a href="https://instagram.com/pizzeria.delicias" target="_blank" class="contact-link">📸 @XXXXXXXXXX</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner reveal" style="max-width:1200px;margin-left:auto;margin-right:auto;margin-bottom:80px">
+  <h2>¿Tienes hambre ahora?<br><em>Te llevamos la pizza a casa</em></h2>
+  <p>Sin apps, sin registro. Solo escríbenos o llámanos directamente.</p>
+  <div class="cta-banner-btns">
+    <a href="https://wa.me/34XXXXXXXXXX?text=Hola%2C%20quiero%20hacer%20un%20pedido%20🍕" class="btn-primary">💬 Pedir por WhatsApp</a>
+    <a href="tel:+34922390263" class="btn-ghost">📞 Llamar ahora</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Pizzeria <em>Delicias</em></div>
+      <p class="footer-tagline">XXXXXXXXXX · Tenerife · Desde 1997</p>
+    </div>
+    <div class="footer-links">
+      <a href="tel:+34922390263">📞 XXX XX XX XX</a>
+      <a href="https://maps.google.com/?q=XXXXXXXXXX" target="_blank">📍 XXXXXXXXXX</a>
+      <a href="https://instagram.com/pizzeria.delicias" target="_blank">📸 @XXXXXXXXXX</a>
+    </div>
+  </div>
+  <div class="footer-copy">© 2025 Pizzeria XXXXXXXXXX · San Isidro, Tenerife</div>
+</footer>
+
+<!-- AGENCY SECTION -->
+<div class="agency-section">
+  <div class="agency-section-inner">
+    <div class="agency-logo">Web<em>ly</em></div>
+    <div class="agency-tagline">Webs para negocios locales en Tenerife</div>
+    <p class="agency-pitch">¿Tu negocio merece una web así?<br><em>La tuya puede estar lista en 48 horas.</em></p>
+    <p class="agency-sub">Sin complicaciones. Tú nos das el logo y la carta, nosotros hacemos el resto.</p>
+    <a href="https://wa.me/34658010376?text=Hola%2C%20vi%20la%20web%20que%20hicisteis%20y%20me%20interesa%20una%20para%20mi%20negocio%20🍕" target="_blank" class="agency-cta">
+      💬 Quiero una web para mi negocio
+    </a>
+    <div class="agency-made">Esta web ha sido creada por Webly · webly.tenerife@gmail.com</div>
+  </div>
+</div>
+
+<!-- MODAL PEDIDO -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-head">
+      <span class="modal-head-title" id="modal-title"></span>
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <img class="modal-img" id="modal-img" src="" alt="">
+    <div class="modal-body">
+      <span class="modal-section-title">Cantidad</span>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
+        <span class="qty-num" id="modal-qty">1</span>
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+      </div>
+
+      <span class="modal-section-title">Quitar ingredientes</span>
+      <div class="ingr-list" id="ingr-list"></div>
+
+      <span class="modal-section-title">Añadir extras</span>
+      <div class="extras-list" id="extras-list"></div>
+
+      <span class="modal-section-title">📍 Tu dirección de entrega</span>
+      <textarea class="addr-input" id="addr-input" rows="2" placeholder="Ej: Calle Mayor 5, Piso 2B, XXXXXXXXXX"></textarea>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-total"><small>Total</small><span id="modal-total-price">0,00 €</span></div>
+      <button class="modal-wa-btn" onclick="sendOrder()">💬 Pedir por WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOAT WA -->
+<a href="https://wa.me/34XXXXXXXXXX?text=Hola%2C%20quiero%20hacer%20un%20pedido%20🍕" class="float-wa" title="Pedir por WhatsApp">
+  <span class="float-wa-label">Pedir ahora</span>
+  💬
+</a>
+
+<script>
+const pizzas = [
+  { id:1, name:'Margarita',   desc:'Tomate natural, mozzarella fresca y albahaca. La clásica de siempre.',                             img:'Fotos/margarita.png', badge:'popular', price:9,  ingr:['Tomate','Mozzarella','Albahaca'] },
+  { id:2, name:'Caprichosa',  desc:'Jamón cocido, champiñones frescos, alcachofas y aceitunas negras.',                                img:'Fotos/Caprichoza.png', badge:'popular', price:11, ingr:['Jamón','Champiñones','Alcachofas','Aceitunas','Mozzarella'] },
+  { id:3, name:'Mechada',     desc:'Carne mechada al estilo canario, pimientos del piquillo y mozzarella. Nuestra especialidad.',      img:'Fotos/Carne mechada.png', badge:'popular', price:13, ingr:['Carne mechada','Pimientos','Tomate','Mozzarella'] },
+  { id:4, name:'4 Quesos',    desc:'Mozzarella, gorgonzola, parmesano y queso de cabra con miel de romero.',                          img:'Fotos/4 Quesos.png', badge:'',        price:12, ingr:['Mozzarella','Gorgonzola','Parmesano','Queso de cabra'] },
+  { id:5, name:'Barbacoa',    desc:'Base barbacoa, pollo a la plancha, cebolla caramelizada, bacon y mozzarella.',                    img:'Fotos/barbacoa.png', badge:'',        price:12, ingr:['Salsa barbacoa','Pollo','Cebolla','Bacon','Mozzarella'] },
+  { id:6, name:'Diavola',     desc:'Salami picante, guindilla, tomate natural y mozzarella. Para los valientes.',                     img:'Fotos/diavola.png', badge:'picante', price:12, ingr:['Salami picante','Guindilla','Tomate','Mozzarella'] },
+  { id:7, name:'Tropical',    desc:'Jamón cocido, piña caramelizada y mozzarella. El clásico que gusta a todos.',                     img:'Fotos/Tropical.png', badge:'',        price:11, ingr:['Jamón','Piña','Mozzarella','Tomate'] },
+  { id:8, name:'Vegetariana', desc:'Pimientos asados, berenjena, calabacín, champiñones y aceitunas. Sin carne.',                     img:'Fotos/vegetariana.png', badge:'veg',     price:11, ingr:['Pimientos','Berenjena','Calabacín','Champiñones','Aceitunas'] },
+];
+
+const extras = [
+  { id:'e1', name:'Extra mozzarella',      price:1.5 },
+  { id:'e2', name:'Bordes rellenos de queso', price:2.0 },
+  { id:'e3', name:'Extra jamón',           price:1.5 },
+  { id:'e4', name:'Extra champiñones',     price:1.0 },
+  { id:'e5', name:'Extra salsa de tomate', price:0.5 },
+  { id:'e6', name:'Masa fina',             price:0.0 },
+];
+
+const bebidas = [
+  { id:201, name:'Coca-Cola Lata',  img:'https://images.unsplash.com/photo-1581636625402-29b2a704ef13?w=400&q=80&auto=format&fit=crop', price:2.0 },
+  { id:202, name:'Coca-Cola Zero',  img:'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&q=80&auto=format&fit=crop', price:2.0 },
+  { id:203, name:'Fanta Naranja',   img:'https://images.unsplash.com/photo-1624552184280-9e48db656dfc?w=400&q=80&auto=format&fit=crop', price:2.0 },
+  { id:204, name:'Sprite Lata',     img:'https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80&auto=format&fit=crop', price:2.0 },
+  { id:205, name:'Agua 330ml',      img:'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=400&q=80&auto=format&fit=crop', price:1.5 },
+  { id:206, name:'Cerveza',         img:'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400&q=80&auto=format&fit=crop', price:2.5 },
+];
+
+const badgeMap   = { popular:'badge-popular', nueva:'badge-nueva', veg:'badge-veg', picante:'badge-picante' };
+const badgeLabel = { popular:'⭐ Popular', nueva:'✨ Nueva', veg:'🌱 Vegana', picante:'🌶 Picante' };
+const WA = '34XXXXXXXXXX';
+
+let currentPizza = null;
+let currentQty   = 1;
+let removedIngr  = new Set();
+let selectedExtras = new Set();
+
+function fmt(n){ return n.toFixed(2).replace('.',',') + ' €'; }
+
+// ── RENDER MENU ──
+function renderMenu(cat){
+  const grid  = document.getElementById('menu-grid');
+  const bgrid = document.getElementById('bebidas-grid');
+  if(cat === 'bebidas'){
+    grid.style.display  = 'none';
+    bgrid.style.display = 'grid';
+    bgrid.innerHTML = bebidas.map(b => `
+      <div class="bebida-card reveal visible">
+        <img class="bebida-img" src="${b.img}" alt="${b.name}" loading="lazy" onerror="this.style.opacity='.3'">
+        <div class="bebida-name">${b.name}</div>
+        <div class="bebida-price">${fmt(b.price)}</div>
+      </div>`).join('');
+    return;
+  }
+  bgrid.style.display = 'none';
+  grid.style.display  = 'grid';
+  grid.innerHTML = pizzas.map(p => {
+    const badge = p.badge ? `<span class="card-badge ${badgeMap[p.badge]}">${badgeLabel[p.badge]}</span>` : '';
+    return `
+    <div class="menu-card reveal visible">
+      <div class="card-img-wrap">
+        <img src="${p.img}" alt="Pizza ${p.name}" loading="lazy" onerror="this.style.opacity='.25'">
+        ${badge}
+      </div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-footer">
+          <div class="card-price"><small>desde</small>${fmt(p.price)}</div>
+          <button class="wa-order-btn" onclick="openModal(${p.id})">💬 Pedir</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterCat(cat, btn){
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderMenu(cat);
+}
+
+// ── MODAL ──
+function openModal(id){
+  currentPizza   = pizzas.find(p => p.id === id);
+  currentQty     = 1;
+  removedIngr    = new Set();
+  selectedExtras = new Set();
+  if(!currentPizza) return;
+
+  document.getElementById('modal-title').textContent = 'Pizza ' + currentPizza.name;
+  document.getElementById('modal-img').src = currentPizza.img;
+  document.getElementById('modal-img').alt = 'Pizza ' + currentPizza.name;
+  document.getElementById('modal-qty').textContent = 1;
+  document.getElementById('addr-input').value = '';
+
+  // ingredientes
+  document.getElementById('ingr-list').innerHTML = currentPizza.ingr.map(i => `
+    <div class="ingr-tag" id="ingr-${i}" onclick="toggleIngr('${i}')">
+      <span>✓</span> ${i}
+    </div>`).join('');
+
+  // extras
+  document.getElementById('extras-list').innerHTML = extras.map(e => `
+    <div class="extra-item" id="extra-${e.id}" onclick="toggleExtra('${e.id}', ${e.price})">
+      <div class="extra-left">
+        <div class="extra-check" id="check-${e.id}"></div>
+        ${e.name}
+      </div>
+      <span class="extra-price">${e.price > 0 ? '+' + fmt(e.price) : 'Gratis'}</span>
+    </div>`).join('');
+
+  updateTotal();
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e){ if(e.target.id === 'modal-overlay') closeModal(); }
+
+function toggleIngr(name){
+  const el = document.getElementById('ingr-' + name);
+  if(removedIngr.has(name)){
+    removedIngr.delete(name);
+    el.classList.remove('removed');
+    el.querySelector('span').textContent = '✓';
+  } else {
+    removedIngr.add(name);
+    el.classList.add('removed');
+    el.querySelector('span').textContent = '✕';
+  }
+}
+
+function toggleExtra(id, price){
+  const item  = document.getElementById('extra-' + id);
+  const check = document.getElementById('check-' + id);
+  if(selectedExtras.has(id)){
+    selectedExtras.delete(id);
+    item.classList.remove('selected');
+    check.textContent = '';
+  } else {
+    selectedExtras.add(id);
+    item.classList.add('selected');
+    check.textContent = '✓';
+  }
+  updateTotal();
+}
+
+function changeQty(d){
+  currentQty = Math.max(1, currentQty + d);
+  document.getElementById('modal-qty').textContent = currentQty;
+  updateTotal();
+}
+
+function updateTotal(){
+  if(!currentPizza) return;
+  const extraTotal = [...selectedExtras].reduce((s, id) => {
+    const e = extras.find(x => x.id === id);
+    return s + (e ? e.price : 0);
+  }, 0);
+  const total = (currentPizza.price + extraTotal) * currentQty;
+  document.getElementById('modal-total-price').textContent = fmt(total);
+}
+
+function sendOrder(){
+  if(!currentPizza) return;
+  const addr = document.getElementById('addr-input').value.trim();
+  const extraTotal = [...selectedExtras].reduce((s, id) => {
+    const e = extras.find(x => x.id === id);
+    return s + (e ? e.price : 0);
+  }, 0);
+  const total = (currentPizza.price + extraTotal) * currentQty;
+
+  const sinIngr  = removedIngr.size   > 0 ? `\n❌ Sin: ${[...removedIngr].join(', ')}` : '';
+  const conExtra = selectedExtras.size > 0
+    ? `\n➕ Extras: ${[...selectedExtras].map(id => extras.find(e=>e.id===id)?.name).join(', ')}`
+    : '';
+  const addrLine = addr ? `\n📍 Dirección: ${addr}` : '\n📍 Dirección: (a confirmar)';
+
+  const msg = encodeURIComponent(
+    `Hola! Quiero hacer un pedido 🍕\n\n` +
+    `• Pizza ${currentPizza.name} x${currentQty}${sinIngr}${conExtra}\n` +
+    `💰 Total: ${fmt(total)}` +
+    addrLine
+  );
+
+  window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  closeModal();
+}
+
+// ── REVEAL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+renderMenu('pizzas');
+</script>
+</body>
+</html>
