@@ -165,7 +165,7 @@ header{position:sticky;top:0;z-index:100;background:rgba(249,245,239,0.96);backd
 .cta-banner-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* FOOTER */
-footer{background:var(--text);color:rgba(255,255,255,0.55);padding:44px 24px 0}
+footer{background:var(--green);color:rgba(255,255,255,0.55);padding:44px 24px 0}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px;justify-content:space-between;align-items:flex-start}
 .footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:5px}
 .footer-logo em{font-style:italic;color:#e8c97a}
@@ -176,7 +176,9 @@ footer{background:var(--text);color:rgba(255,255,255,0.55);padding:44px 24px 0}
 .footer-copy{font-size:12px;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.07);margin-top:36px;padding:18px 0;text-align:center;width:100%}
 
 /* AGENCY HEADER TAG */
-.agency-tag{font-size:11px;color:var(--muted);letter-spacing:0.3px}
+.agency-tag{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);letter-spacing:0.3px;text-decoration:none;padding:5px 12px 5px 5px;border-radius:50px;border:1px solid var(--border);transition:border-color .2s,background .2s}
+.agency-tag:hover{border-color:var(--gold);background:var(--surface)}
+.agency-tag svg{flex-shrink:0}
 .agency-tag span{font-weight:700;color:var(--text)}
 .agency-tag span em{color:var(--red);font-style:normal}
 
@@ -346,7 +348,10 @@ button,a{touch-action:manipulation}
         <div class="nav-sep"></div>
         <a href="tel:+34922390263">XXX XX XX XX</a>
       </nav>
-      <div class="agency-tag">Hecha por <span>Wol<em>na</em></span></div>
+      <a href="https://wa.me/34658010376?text=Hola%2C%20vi%20la%20web%20que%20hicisteis%20y%20me%20interesa%20una%20para%20mi%20negocio%20🍕" target="_blank" class="agency-tag" title="Hecha por Wolna">
+        <svg viewBox="0 0 32 32" width="18" height="18"><rect width="32" height="32" fill="#0A1628" rx="7"/><path d="M4 9 L9 21 L13.5 13 L16 17.5 L18.5 13 L23 21 L28 9" stroke="#06B6D4" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 26 Q10.5 22 16 25.5 Q21.5 29 27 25.5" stroke="#22D3EE" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.7"/></svg>
+        <span>Hecha por <em>Wolna</em></span>
+      </a>
       <a href="https://wa.me/34XXXXXXXXXX?text=Hola%2C%20quiero%20hacer%20un%20pedido%20🍕" class="wa-btn">
         💬 Pedir ahora
       </a>
